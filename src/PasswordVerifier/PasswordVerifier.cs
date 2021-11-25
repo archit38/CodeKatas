@@ -18,6 +18,9 @@ namespace Katas
 
         private bool PassesLengthRule()
         {
+            if(password.Length < minLength)
+                throw new PasswordMaxLengthException($"Password should have a minimum of {minLength} characters");
+
             return true;
         }
     }
