@@ -1,26 +1,26 @@
 ﻿using KataExceptions;
 using System;
+using System.Collections.Generic;
 
-namespace Katas
+namespace Katas.PasswordVerifier
 {
     public class PasswordVerifier
     {
-        private int minLength = 8;
         private string password;
+        private List<IPasswordRule> passwordRules;
 
-        public PasswordVerifier(string password, int minLength = 8)
+        public PasswordVerifier(string password, List<IPasswordRule> passwordRules)
         {
-            this.minLength = minLength;
             this.password = password;
+            this.passwordRules = passwordRules;
         }
 
-        public bool Verify() => PassesLengthRule();
-
-        private bool PassesLengthRule()
+        public bool Verify() 
         {
-            if(password.Length < minLength)
-                throw new PasswordMaxLengthException($"Password should have a minimum of {minLength} characters");
-
+            foreach(var rule in passwordRules)
+            {
+                 rule.Result(password);
+            }
             return true;
         }
     }
