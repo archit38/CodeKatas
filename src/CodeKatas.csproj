@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>TDD_Katas</RootNamespace>
+    <RootNamespace>Katas</RootNamespace>
 
     <IsPackable>false</IsPackable>
   </PropertyGroup>
